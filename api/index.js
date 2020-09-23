@@ -1,6 +1,7 @@
 import http from 'http';
 import socketIO from 'socket.io';
 
+const players = [];
 const server = http.createServer((req, res) => {
     res.write('hello world');
     res.end();
@@ -11,14 +12,24 @@ const io = socketIO(server, {
 });
 
 io.on('connection', socket => {
+    if (players.length >= 2){
+        console.log('connexion refusée')
+        return
+    }
     let user = socket.handshake.query.name;
     let userId = Math.floor(Math.random()*(5000-1000+1)+1000);
-    console.log(user + '-' + userId + ' is connected');
+    user = user + '-' + userId;
+    let player = {
+        name : user,
+        socket : socket,
+        pokemon : null }
+    players.push(player);
+    console.log(user + ' is connected');
 
     socket.emit('connected', 'test emit');
 
     socket.on('disconnect', () => {
-        console.log(user + '-' + userId + ' has disconnected');
+        console.log(user + ' has disconnected');
     });
 });
 
