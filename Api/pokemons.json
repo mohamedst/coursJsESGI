@@ -1,0 +1,142 @@
+[
+  {
+    "originalId": 1,
+    "name": "Bulbizarre",
+    "hp": 45,
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    "moves": [
+      {
+        "originalId": 13,
+        "name": "Coupe-Vent",
+        "power": 8
+      },
+      {
+        "originalId": 15,
+        "name": "Coupe",
+        "power": 5
+      },
+      {
+        "originalId": 20,
+        "name": "Étreinte",
+        "power": 2
+      },
+      {
+        "originalId": 22,
+        "name": "Fouet Lianes",
+        "power": 5
+      }
+    ]
+  },
+  {
+    "originalId": 4,
+    "name": "Salamèche",
+    "hp": 39,
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+    "moves": [
+      {
+        "originalId": 5,
+        "name": "Ultimapoing",
+        "power": 8
+      },
+      {
+        "originalId": 7,
+        "name": "Poing de Feu",
+        "power": 8
+      },
+      {
+        "originalId": 9,
+        "name": "Poing-Éclair",
+        "power": 8
+      },
+      {
+        "originalId": 10,
+        "name": "Griffe",
+        "power": 4
+      }
+    ]
+  },
+  {
+    "originalId": 7,
+    "name": "Carapuce",
+    "hp": 44,
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+    "moves": [
+      {
+        "originalId": 5,
+        "name": "Ultimapoing",
+        "power": 8
+      },
+      {
+        "originalId": 8,
+        "name": "Poing-Glace",
+        "power": 8
+      },
+      {
+        "originalId": 25,
+        "name": "Ultimawashi",
+        "power": 12
+      },
+      {
+        "originalId": 29,
+        "name": "Coup d’Boule",
+        "power": 7
+      }
+    ]
+  },
+  {
+    "originalId": 25,
+    "name": "Pikachu",
+    "hp": 35,
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    "moves": [
+      {
+        "originalId": 5,
+        "name": "Ultimapoing",
+        "power": 8
+      },
+      {
+        "originalId": 6,
+        "name": "Jackpot",
+        "power": 4
+      },
+      {
+        "originalId": 9,
+        "name": "Poing-Éclair",
+        "power": 8
+      },
+      {
+        "originalId": 21,
+        "name": "Souplesse",
+        "power": 8
+      }
+    ]
+  },
+  {
+    "originalId": 133,
+    "name": "Évoli",
+    "hp": 55,
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
+    "moves": [
+      {
+        "originalId": 29,
+        "name": "Coup d’Boule",
+        "power": 7
+      },
+      {
+        "originalId": 33,
+        "name": "Charge",
+        "power": 4
+      },
+      {
+        "originalId": 34,
+        "name": "Plaquage",
+        "power": 9
+      },
+      {
+        "originalId": 36,
+        "name": "Bélier",
+        "power": 9
+      }
+    ]
+  }
+]
