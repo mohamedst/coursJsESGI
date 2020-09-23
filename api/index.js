@@ -1,6 +1,6 @@
 import http from 'http';
 import socketIO from 'socket.io';
-import { startGame, terminateGame, handleMove } from './game';
+import { startGame, terminateGame, handleMove } from './game.js';
 
 const server = http.createServer((req, res) => {
     res.write('hello world');
