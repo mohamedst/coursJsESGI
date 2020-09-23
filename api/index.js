@@ -2,6 +2,7 @@ import http from 'http';
 import socketIO from 'socket.io';
 
 const players = [];
+const config = { turn: 0 };
 const server = http.createServer((req, res) => {
     res.write('hello world');
     res.end();
