@@ -12,12 +12,13 @@ const io = socketIO(server, {
 
 io.on('connection', socket => {
     let user = socket.handshake.query.name;
-    console.log(user + ' is connected');
+    let userId = Math.floor(Math.random()*(5000-1000+1)+1000);
+    console.log(user + '-' + userId + ' is connected');
 
     socket.emit('connected', 'test emit');
 
     socket.on('disconnect', () => {
-        console.log(user + ' has disconnected');
+        console.log(user + '-' + userId + ' has disconnected');
     });
 });
 
