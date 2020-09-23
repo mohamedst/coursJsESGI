@@ -27,7 +27,16 @@ export const startGame = (players, config) => {
 export const terminateGame = (socket, players) => {
     console.log('Game terminating...');
 
-    // TODO
+    const index = players.findIndex(player => player.socket.id === socket.id);
+
+    if(index !== -1) {
+       players.splice(index,1);
+    }
+
+    for (const player of players) {
+        player.pokemons = null;
+        player.socket.emit('terminated')
+    }
 };
 
 export const handleMove = (moveId, players, config) => {
