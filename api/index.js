@@ -1,8 +1,7 @@
 import http from 'http';
 import socketIO from 'socket.io';
+import { startGame, terminateGame, handleMove } from './game';
 
-const players = [];
-const config = { turn: 0 };
 const server = http.createServer((req, res) => {
     res.write('hello world');
     res.end();
@@ -12,25 +11,33 @@ const io = socketIO(server, {
     pingTimeout: 60000,
 });
 
-io.on('connection', socket => {
-    if (players.length >= 2){
-        console.log('connexion refusée')
-        return
-    }
-    let user = socket.handshake.query.name;
-    let userId = Math.floor(Math.random()*(5000-1000+1)+1000);
-    user = user + '-' + userId;
-    let player = {
-        name : user,
-        socket : socket,
-        pokemon : null }
-    players.push(player);
-    console.log(user + ' is connected');
+// Shape of Player { name, socket, pokemon }
+const players = [];
+let config = { turn: 0 };
 
-    socket.emit('connected', 'test emit');
+io.on('connection', socket => {
+    const name = socket.handshake.query.name || 'Someone';
+    console.log(`${name} is connected`);
+    socket.emit('connected');
+
+    if (players.length < 2) {
+        players.push({ name, socket, pokemon: null });
+    } else {
+        socket.emit('connection_refused');
+        socket.disconnect();
+    }
+
+    if (2 === players.length) {
+        startGame(players, config);
+    }
 
     socket.on('disconnect', () => {
-        console.log(user + ' has disconnected');
+        console.log(`${name} has disconnected`);
+        terminateGame(socket, players);
+    });
+
+    socket.on('move', moveId => {
+        handleMove(moveId, players, config);
     });
 });
 
