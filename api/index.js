@@ -11,12 +11,13 @@ const io = socketIO(server, {
 });
 
 io.on('connection', socket => {
-    console.log('someone is connected');
+    let user = socket.handshake.query.name;
+    console.log(user + ' is connected');
 
     socket.emit('connected', 'test emit');
 
     socket.on('disconnect', () => {
-        console.log('someone has disconnected');
+        console.log(user + ' has disconnected');
     });
 });
 
