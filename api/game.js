@@ -1,9 +1,27 @@
-import pokemons from './pokemons';
+import pokemons from './pokemons.json';
 
 export const startGame = (players, config) => {
     console.log('Game starting...');
+    config.turn = Math.floor(Math.random() * 2);
 
-    // TODO
+    for (const player of players){
+        const index = Math.floor(Math.random() * pokemons.length);
+        player.pokemons = { ... pokemons[index] };
+    }
+
+    for (const [index, player] of players.entries()){
+        const { socket, ...you  } = player;
+        const { socket: _, ...opponent } = players.find(player => player.socket.id !== socket.id)
+
+        socket.emit('started', {
+            you,
+            opponent,
+            turn: index === config.turn ? 'you' : 'opponent'
+        })
+    }
+
+
+
 };
 
 export const terminateGame = (socket, players) => {
