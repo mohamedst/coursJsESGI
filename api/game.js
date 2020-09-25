@@ -46,7 +46,7 @@ export const handleMove = (moveId, players, config) => {
     console.log(`${activePlayer.name} with "${activePlayer.pokemon.name}" has played "${move.name}"`);
     opponent.pokemon.hp -= move.power;
     console.log(`${opponent.pokemon.name} (${opponent.pokemon.hp}hp) has taken ${move.power} damages`);
-    if(opponent.pokemon.hp === 0){
+    if(opponent.pokemon.hp <= 0){
         endGame(players);
     }
     else{
@@ -64,6 +64,7 @@ const updateGame = (moveId, players, config) => {
     for (const [index, player] of players.entries()){
         const { socket, ...you  } = player;
         const { socket: _, ...opponent } = players.find(player => player.socket.id !== socket.id)
+        console.log(you);
 
         socket.emit('moved', {
             you,
@@ -75,7 +76,5 @@ const updateGame = (moveId, players, config) => {
 };
 
 const endGame = players => {
-    console.log('Game ending...');
 
-    // TODO
 };
