@@ -6,7 +6,7 @@ export const startGame = (players, config) => {
 
     for (const player of players){
         const index = Math.floor(Math.random() * pokemons.length);
-        player.pokemons = { ... pokemons[index] };
+        player.pokemon = { ... pokemons[index] };
     }
 
     for (const [index, player] of players.entries()){
@@ -34,7 +34,7 @@ export const terminateGame = (socket, players) => {
     }
 
     for (const player of players) {
-        player.pokemons = null;
+        player.pokemon = null;
         player.socket.emit('terminated')
     }
 };
