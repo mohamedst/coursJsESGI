@@ -40,10 +40,19 @@ export const terminateGame = (socket, players) => {
 };
 
 export const handleMove = (moveId, players, config) => {
-    // console.log(`${activePlayer.name} with "${activePlayer.pokemon.name}" has played "${move.name}"`);
-    // console.log(`${opponent.pokemon.name} (${opponent.pokemon.hp}hp) has taken ${move.power} damages`);
-
-    // TODO
+    console.log(moveId,players,config);
+    const activePlayer = players[config.turn];
+    const opponent = players[config.turn === 0? 1:0];
+    const move = player.pokemon.moves[moveId];
+    console.log(`${activePlayer.name} with "${activePlayer.pokemon.name}" has played "${move.name}"`);
+    opponent.pokemon.hp -= move.power;
+    console.log(`${opponent.pokemon.name} (${opponent.pokemon.hp}hp) has taken ${move.power} damages`);
+    if(opponent.pokemon.hp === 0){
+        endGame(players);
+    }
+    else{
+        updateGame(moveId,players,config);
+    }
 };
 
 const updateGame = (moveId, players, config) => {
