@@ -17,20 +17,32 @@ export default ({ data, status, socket }) => {
         if ( data?.turn && (data.turn === "you") ) {
             socket.emit('move', 0);
         }
+        else {
+            message = 'is not your turn';
+        }
     }
     const triggerAction2 = () => {
         if ( data?.turn && (data.turn === "you") ) {
             socket.emit('move', 1);
+        }
+        else {
+            message = 'is not your turn';
         }
     }
     const triggerAction3 = () => {
         if ( data?.turn && (data.turn === "you") ) {
             socket.emit('move', 2);
         }
+        else {
+            message = 'is not your turn';
+        }
     }
     const triggerAction4 = () => {
         if ( data?.turn && (data.turn === "you") ) {
             socket.emit('move', 3);
+        }
+        else {
+            message = 'is not your turn';
         }
     }
     return (

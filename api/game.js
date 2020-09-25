@@ -55,11 +55,11 @@ export const handleMove = (moveId, players, config) => {
 };
 
 const updateGame = (moveId, players, config) => {
-    if (config.turn === 0){
-        config.turn = 1;
+    if (config.turn === 'you'){
+        config.turn = 'opponent';
     }
     else{
-        config.turn= 0;
+        config.turn= 'you';
     }
     for (const [index, player] of players.entries()){
         const { socket, ...you  } = player;
@@ -70,7 +70,7 @@ const updateGame = (moveId, players, config) => {
             you,
             opponent,
             moveId,
-            turn: index === config.turn ? 'you' : 'opponent'
+            turn: config.turn
         })
     }
 };
@@ -84,7 +84,7 @@ const endGame = players => {
         let win = null
         if (you.pokemon.hp > 0 && opponent.pokemon.hp <=0){
             win = index
-            console.log('Winner is :' + player.name + '!')
+            console.log('Winner is : ' + player.name + '!')
         }
 
         socket.emit('moved', {
