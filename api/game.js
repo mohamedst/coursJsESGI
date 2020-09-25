@@ -76,5 +76,21 @@ const updateGame = (moveId, players, config) => {
 };
 
 const endGame = players => {
+    console.log('Game ending...');
+    for (const [index, player] of players.entries()){
+        const { socket, ...you  } = player;
+        const { socket: _, ...opponent } = players.find(player => player.socket.id !== socket.id)
 
+        let win = null
+        if (you.pokemon.hp > 0 && opponent.pokemon.hp <=0){
+            win = index
+            console.log('Winner is :' + player.name + '!')
+        }
+
+        socket.emit('moved', {
+            you,
+            opponent,
+            win,
+        })
+    }
 };
